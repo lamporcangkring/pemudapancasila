@@ -34,6 +34,107 @@
     --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Light Theme Variables & Overrides */
+body.light-theme {
+    --bg-dark: #f5f6fa;
+    --bg-card: rgba(255, 255, 255, 0.75);
+    --bg-card-hover: rgba(255, 255, 255, 0.95);
+    --text-white: #121216;
+    --text-gray: #4b4b52;
+    --text-muted: #84848d;
+    --secondary: #e4e6eb;
+    --secondary-hover: #d8dadf;
+    --border-glass: rgba(0, 0, 0, 0.08);
+    --border-glass-hover: rgba(255, 98, 0, 0.4);
+}
+
+body.light-theme .hero-bg-overlay {
+    background: radial-gradient(circle at 70% 30%, rgba(255, 98, 0, 0.06) 0%, rgba(245, 246, 250, 1) 70%);
+}
+
+body.light-theme .hero-camo-pattern {
+    opacity: 0.02;
+    background-image: 
+        radial-gradient(circle at 20% 30%, var(--primary) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, var(--primary) 0%, transparent 25%),
+        radial-gradient(circle at 40% 80%, rgba(0,0,0,0.1) 0%, transparent 30%),
+        radial-gradient(circle at 60% 15%, rgba(0,0,0,0.1) 0%, transparent 20%);
+}
+
+body.light-theme .shield-glowing-card {
+    background: var(--bg-card);
+    border-color: var(--border-glass);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .shield-glowing-card:hover {
+    box-shadow: 0 30px 60px rgba(255, 98, 0, 0.12);
+    border-color: var(--primary);
+}
+
+body.light-theme .logo-subtext {
+    color: #121216;
+    text-shadow: none;
+}
+
+body.light-theme .stat-card {
+    background: var(--bg-card);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+body.light-theme .stat-card:hover {
+    box-shadow: 0 15px 30px rgba(255, 98, 0, 0.08);
+}
+
+body.light-theme .accordion-content {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+body.light-theme .team-image {
+    background: #e4e6eb;
+}
+
+body.light-theme .avatar-gradient {
+    border-color: rgba(0,0,0,0.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+body.light-theme .team-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .main-footer {
+    background-color: #0c0c0f;
+}
+
+body.light-theme .input-wrapper input,
+body.light-theme .input-wrapper select,
+body.light-theme .input-wrapper textarea {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    color: #121216;
+}
+
+body.light-theme .input-wrapper input:focus,
+body.light-theme .input-wrapper select:focus,
+body.light-theme .input-wrapper textarea:focus {
+    background-color: #ffffff;
+    border-color: var(--primary);
+}
+
+body.light-theme .form-success-card {
+    background-color: #ffffff;
+}
+
+body.light-theme ::-webkit-scrollbar-track {
+    background: #f5f6fa;
+}
+
+body.light-theme ::-webkit-scrollbar-thumb {
+    background: #dee2e6;
+    border: 2px solid #f5f6fa;
+}
+
 /* 1. Global Reset & Base Styles */
 * {
     margin: 0;
@@ -330,6 +431,27 @@ header.scrolled .navbar {
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--border-glass);
+    color: var(--text-white);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    background-color: rgba(255, 98, 0, 0.05);
 }
 
 .hamburger {

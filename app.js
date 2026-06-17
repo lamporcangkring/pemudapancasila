@@ -5,6 +5,30 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // 0. Theme Toggle (Dark & Light Mode)
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference, default to dark
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        themeIcon.className = 'fa-solid fa-moon';
+    } else {
+        themeIcon.className = 'fa-solid fa-sun';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+        if (document.body.classList.contains('light-theme')) {
+            localStorage.setItem('theme', 'light');
+            themeIcon.className = 'fa-solid fa-moon';
+        } else {
+            localStorage.setItem('theme', 'dark');
+            themeIcon.className = 'fa-solid fa-sun';
+        }
+    });
+
     // 1. Header Scroll Effect
     const header = document.getElementById('header');
     const handleScrollHeader = () => {
