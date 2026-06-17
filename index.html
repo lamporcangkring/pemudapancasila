@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSM Pemuda Pancasila - Pancasila Abadi</title>
+    <meta name="description" content="Website Resmi Profil LSM Pemuda Pancasila. Menjaga persatuan bangsa, membela Pancasila, dan memberdayakan pemuda Indonesia. Sekali Layar Terkembang, Surut Kita Berpantang!">
+    
+    <!-- Google Fonts: Outfit & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header id="header">
+        <div class="container navbar">
+            <a href="#" class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 100 100" width="45" height="45">
+                    <defs>
+                        <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffe600" />
+                            <stop offset="100%" stop-color="#ff6200" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Wings Outline -->
+                    <path d="M10,40 Q30,20 50,45 Q70,20 90,40 Q95,70 50,90 Q5,70 10,40 Z" fill="none" stroke="url(#gold-grad)" stroke-width="2.5" />
+                    <!-- Shield Inside -->
+                    <path d="M30,48 Q50,40 70,48 Q70,70 50,82 Q30,70 30,48 Z" fill="#ff6200" opacity="0.85" />
+                    <!-- Garuda Icon (Stylized silhouette) -->
+                    <path d="M50,30 L45,40 L48,42 L42,48 L50,55 L58,48 L52,42 L55,40 Z" fill="#ffffff" />
+                    <circle cx="50" cy="60" r="8" fill="#ffe600" />
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-title">PEMUDA</span>
+                    <span class="logo-subtitle">PANCASILA</span>
+                </div>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">Tentang Kami</a></li>
+                    <li><a href="#programs" class="nav-link">Program Kerja</a></li>
+                    <li><a href="#kepengurusan" class="nav-link">Kepengurusan</a></li>
+                    <li><a href="#daftar" class="nav-link cta-mobile">Daftar Anggota</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-actions">
+                <a href="#daftar" class="btn btn-primary btn-nav">Gabung Anggota</a>
+                <button class="hamburger" id="hamburger" aria-label="Menu Navigasi">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg-overlay"></div>
+            <div class="hero-camo-pattern"></div>
+            <div class="container hero-content">
+                <div class="hero-text animate-fade-in">
+                    <span class="badge">Lembaga Swadaya Masyarakat</span>
+                    <h1>PANCASILA<br><span class="highlight-text">ABADI!</span></h1>
+                    <p class="slogan-text">"Sekali Layar Terkembang, Surut Kita Berpantang"</p>
+                    <p class="description">
+                        Berdiri sejak 1959, Pemuda Pancasila berkomitmen penuh menjaga ideologi bangsa, mengokohkan persatuan nasional, dan memberdayakan potensi pemuda demi kejayaan NKRI.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#daftar" class="btn btn-primary btn-glow">Daftar Anggota</a>
+                        <a href="#about" class="btn btn-secondary"><i class="fa-solid fa-circle-play"></i> Pelajari Profil</a>
+                    </div>
+                </div>
+                <div class="hero-visual animate-slide-in">
+                    <div class="shield-glowing-card">
+                        <div class="shield-glow-effect"></div>
+                        <svg viewBox="0 0 200 200" width="100%" height="100%">
+                            <!-- Stylized Big Eagle Shield -->
+                            <path d="M30,70 C50,20 150,20 170,70 C185,120 100,180 100,180 C100,180 15,120 30,70 Z" fill="rgba(12, 12, 14, 0.8)" stroke="#ff6200" stroke-width="4" />
+                            <path d="M50,80 C65,40 135,40 150,80 C160,120 100,160 100,160 C100,160 40,120 50,80 Z" fill="#ff6200" opacity="0.1" />
+                            <!-- Pancasila Shield Inner Details -->
+                            <g transform="translate(60, 60) scale(0.8)">
+                                <!-- Center Star -->
+                                <polygon points="50,15 57,38 82,38 62,52 69,75 50,60 31,75 38,52 18,38 43,38" fill="#ffd700" />
+                                <!-- Mini shield outlines -->
+                                <path d="M15,15 L15,85 L85,85 L85,15 Z" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.3" />
+                            </g>
+                            <!-- Text Outline -->
+                            <path id="curve" d="M 40,30 A 60,60 0 0,1 160,30" fill="none" />
+                            <text width="200" fill="#ffd700" font-family="'Montserrat', sans-serif" font-weight="800" font-size="12" letter-spacing="1">
+                                <textPath href="#curve" startOffset="50%" text-anchor="middle">PEMUDA PANCASILA</textPath>
+                            </text>
+                        </svg>
+                        <div class="logo-subtext">PANCASILA ABADI</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card reveal">
+                        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                        <h3 class="stat-number" data-target="15000">0</h3>
+                        <p class="stat-label">Anggota Terdaftar</p>
+                    </div>
+                    <div class="stat-card reveal">
+                        <div class="stat-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <h3 class="stat-number" data-target="34">0</h3>
+                        <p class="stat-label">Provinsi Aktif</p>
+                    </div>
+                    <div class="stat-card reveal">
+                        <div class="stat-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                        <h3 class="stat-number" data-target="820">0</h3>
+                        <p class="stat-label">Kegiatan Sosial</p>
+                    </div>
+                    <div class="stat-card reveal">
+                        <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h3 class="stat-number" data-target="1959">0</h3>
+                        <p class="stat-label">Tahun Didirikan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image-side reveal">
+                        <div class="about-frame">
+                            <div class="camo-overlay-card">
+                                <h3>PANCASILA ABADI!</h3>
+                                <p class="quote">"Negara Kesatuan Republik Indonesia adalah harga mati. Mengawal Pancasila adalah panggilan suci."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-text-side reveal">
+                        <span class="section-tag">Tentang Kami</span>
+                        <h2>Menjaga Pilar Kebangsaan Secara <span class="highlight-text">Nyata</span></h2>
+                        <p class="lead-text">
+                            Pemuda Pancasila (PP) adalah organisasi kemasyarakatan Indonesia yang didirikan oleh Jenderal Abdul Haris Nasution pada 28 Oktober 1959. 
+                        </p>
+                        <p class="text-content">
+                            Kami bertujuan untuk mempertahankan ideologi Pancasila sebagai dasar negara dari segala bentuk ancaman, meningkatkan kesadaran berbangsa dan bernegara, serta melaksanakan aksi sosial kemanusiaan untuk masyarakat Indonesia di berbagai pelosok nusantara.
+                        </p>
+                        
+                        <div class="about-accordion">
+                            <div class="accordion-item active">
+                                <div class="accordion-header">
+                                    <h4><i class="fa-solid fa-eye text-primary"></i> Visi Kami</h4>
+                                    <span class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Mewujudkan kepemudaan yang tangguh, berkarakter Pancasila, berwawasan kebangsaan luas, mandiri secara ekonomi, dan aktif dalam menjaga kedaulatan NKRI serta persatuan bangsa.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h4><i class="fa-solid fa-bullseye text-primary"></i> Misi Kami</h4>
+                                    <span class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <ul>
+                                        <li>Mengawal dan mengamalkan nilai-nilai Pancasila dalam kehidupan bermasyarakat.</li>
+                                        <li>Membentuk pemuda yang berintegritas, disiplin, dan cinta tanah air.</li>
+                                        <li>Berpartisipasi aktif dalam kegiatan sosial, kemanusiaan, penanggulangan bencana, dan pemberdayaan masyarakat.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Kerja Section -->
+        <section id="programs" class="programs-section">
+            <div class="container text-center">
+                <span class="section-tag">Kontribusi Nyata</span>
+                <h2>Program & <span class="highlight-text">Kegiatan Utama</span></h2>
+                <p class="section-subtitle">Aksi konkret kami di tengah masyarakat demi menjaga keutuhan dan ketahanan bangsa.</p>
+                
+                <div class="programs-grid">
+                    <div class="program-card reveal">
+                        <div class="program-glow"></div>
+                        <div class="program-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Bela Negara & Ideologi</h3>
+                        <p>Mengadakan pelatihan kepemimpinan, pemantapan ideologi Pancasila, bela negara, serta diskusi kebangsaan bagi generasi muda secara rutin.</p>
+                        <a href="#daftar" class="program-link">Daftar Sekarang <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                    
+                    <div class="program-card reveal">
+                        <div class="program-glow"></div>
+                        <div class="program-icon"><i class="fa-solid fa-kit-medical"></i></div>
+                        <h3>Sosial & Kemanusiaan</h3>
+                        <p>Respon cepat penanggulangan bencana, pembagian sembako, donor darah, kerja bakti massal, dan advokasi hukum gratis bagi warga tidak mampu.</p>
+                        <a href="#daftar" class="program-link">Daftar Sekarang <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                    
+                    <div class="program-card reveal">
+                        <div class="program-glow"></div>
+                        <div class="program-icon"><i class="fa-solid fa-briefcase"></i></div>
+                        <h3>Ekonomi Kreatif & Pemuda</h3>
+                        <p>Pemberdayaan UMKM anggota, pelatihan kewirausahaan digital, pembinaan pemuda di bidang olahraga, seni, dan pengembangan kompetensi kerja.</p>
+                        <a href="#daftar" class="program-link">Daftar Sekarang <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kepengurusan Section -->
+        <section id="kepengurusan" class="kepengurusan-section">
+            <div class="container text-center">
+                <span class="section-tag">Struktur Organisasi</span>
+                <h2>Dewan <span class="highlight-text">Pengurus Pusat</span></h2>
+                <p class="section-subtitle">Tokoh kepemimpinan yang menggerakkan organisasi menuju kemajuan bersama.</p>
+                
+                <div class="kepengurusan-grid">
+                    <div class="team-card reveal">
+                        <div class="team-image">
+                            <div class="avatar-gradient">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>KPH H. Japto Soelistyo Soerjosoemarno, S.H.</h4>
+                            <p class="role">Ketua Umum DPP</p>
+                            <div class="social-links">
+                                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card reveal">
+                        <div class="team-image">
+                            <div class="avatar-gradient">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>H. Arif Rahman, S.H.</h4>
+                            <p class="role">Sekretaris Jenderal</p>
+                            <div class="social-links">
+                                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card reveal">
+                        <div class="team-image">
+                            <div class="avatar-gradient">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h4>H. Popo Parulian, S.E.</h4>
+                            <p class="role">Bendahara Umum</p>
+                            <div class="social-links">
+                                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulir Pendaftaran Section -->
+        <section id="daftar" class="daftar-section">
+            <div class="container">
+                <div class="daftar-wrapper">
+                    <div class="daftar-info reveal">
+                        <span class="section-tag text-orange">Pendaftaran Anggota</span>
+                        <h2>Mari Bergabung & <span class="highlight-text">Berjuang Bersama!</span></h2>
+                        <p>Siapkan diri Anda menjadi bagian dari keluarga besar LSM Pemuda Pancasila. Mari kita jaga kesatuan NKRI dan membangun masyarakat Indonesia yang berkarakter Pancasila.</p>
+                        
+                        <div class="syarat-list">
+                            <div class="syarat-item">
+                                <div class="syarat-icon"><i class="fa-solid fa-circle-check"></i></div>
+                                <div class="syarat-text">Warga Negara Indonesia (WNI) berusia minimal 17 tahun.</div>
+                            </div>
+                            <div class="syarat-item">
+                                <div class="syarat-icon"><i class="fa-solid fa-circle-check"></i></div>
+                                <div class="syarat-text">Setia kepada NKRI, Pancasila, dan UUD 1945.</div>
+                            </div>
+                            <div class="syarat-item">
+                                <div class="syarat-icon"><i class="fa-solid fa-circle-check"></i></div>
+                                <div class="syarat-text">Bersedia menaati AD/ART dan tata tertib organisasi.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="daftar-form-container reveal">
+                        <div class="form-header">
+                            <h3>Formulir Pendaftaran</h3>
+                            <p>Isi data diri lengkap Anda di bawah ini.</p>
+                        </div>
+                        
+                        <form id="membershipForm" class="membership-form">
+                            <div class="form-group">
+                                <label for="fullName">Nama Lengkap sesuai KTP</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input type="text" id="fullName" name="fullName" placeholder="Masukkan nama lengkap Anda" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Alamat Email</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <input type="email" id="email" name="email" placeholder="Contoh: nama@domain.com" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Nomor Whatsapp</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <input type="tel" id="phone" name="phone" placeholder="Contoh: 081234567xxx" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="provinsi">Provinsi Domisili</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-map"></i>
+                                    <select id="provinsi" name="provinsi" required>
+                                        <option value="" disabled selected>Pilih Provinsi Anda</option>
+                                        <option value="DKI Jakarta">DKI Jakarta</option>
+                                        <option value="Jawa Barat">Jawa Barat</option>
+                                        <option value="Jawa Tengah">Jawa Tengah</option>
+                                        <option value="Jawa Timur">Jawa Timur</option>
+                                        <option value="Banten">Banten</option>
+                                        <option value="Sumatera Utara">Sumatera Utara</option>
+                                        <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                                        <option value="Kalimantan Timur">Kalimantan Timur</option>
+                                        <option value="Lainnya">Provinsi Lainnya</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reason">Alasan Bergabung</label>
+                                <div class="input-wrapper align-start">
+                                    <i class="fa-solid fa-message mt-1"></i>
+                                    <textarea id="reason" name="reason" rows="3" placeholder="Sebutkan motivasi Anda bergabung..." required></textarea>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block btn-glow">Kirim Formulir Pendaftaran</button>
+                        </form>
+                        
+                        <!-- Toast / Success Message -->
+                        <div id="formSuccessMessage" class="form-success-card">
+                            <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                            <h3>Pendaftaran Berhasil!</h3>
+                            <p>Terima kasih telah mendaftar. Tim administrasi kami akan segera menghubungi Anda melalui WhatsApp untuk proses verifikasi KTA.</p>
+                            <button id="resetFormBtn" class="btn btn-secondary btn-sm">Daftar Kembali</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-info-brand">
+                <a href="#" class="logo-container">
+                    <svg class="logo-svg" viewBox="0 0 100 100" width="45" height="45">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="#ff6200" stroke-width="2" />
+                        <path d="M50,25 L40,40 L45,43 L35,55 L50,68 L65,55 L55,43 L60,40 Z" fill="#ff6200" />
+                    </svg>
+                    <div class="logo-text">
+                        <span class="logo-title text-orange">PEMUDA</span>
+                        <span class="logo-subtitle text-white">PANCASILA</span>
+                    </div>
+                </a>
+                <p class="footer-desc">Mengabdi untuk negeri, membela ideologi bangsa. Menjunjung tinggi persatuan dan keadilan sosial.</p>
+                <h4 class="slogan-badge">PANCASILA ABADI!</h4>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#hero">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#programs">Program Kerja</a></li>
+                    <li><a href="#kepengurusan">Struktur Kepengurusan</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Sekretariat DPP</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Jl. Pejaten Barat No. 30, Jakarta Selatan, DKI Jakarta, Indonesia.</p>
+                <p><i class="fa-solid fa-phone"></i> (021) 789-XXXX</p>
+                <p><i class="fa-solid fa-envelope"></i> info@pemudapancasila.or.id</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container text-center">
+                <p>&copy; 2026 LSM Pemuda Pancasila. All Rights Reserved. Dibuat dengan dedikasi kebangsaan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
