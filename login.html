@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin - Pemuda Pancasila</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+    <!-- Back to Home Button -->
+    <a href="index.html" class="back-home-btn">
+        <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
+    </a>
+
+    <!-- Theme Toggle -->
+    <div class="login-theme-wrapper">
+        <button id="themeToggle" class="theme-toggle" aria-label="Ubah Tema">
+            <i class="fa-solid fa-sun"></i>
+        </button>
+    </div>
+
+    <div class="login-container-card">
+        <div class="login-card-glow"></div>
+        <div class="login-header text-center">
+            <svg class="logo-svg mb-3" viewBox="0 0 100 100" width="70" height="70">
+                <defs>
+                    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffe600" />
+                        <stop offset="100%" stop-color="#ff6200" />
+                    </linearGradient>
+                </defs>
+                <path d="M10,40 Q30,20 50,45 Q70,20 90,40 Q95,70 50,90 Q5,70 10,40 Z" fill="none" stroke="url(#gold-grad)" stroke-width="2.5" />
+                <path d="M30,48 Q50,40 70,48 Q70,70 50,82 Q30,70 30,48 Z" fill="#ff6200" opacity="0.85" />
+                <path d="M50,30 L45,40 L48,42 L42,48 L50,55 L58,48 L52,42 L55,40 Z" fill="#ffffff" />
+                <circle cx="50" cy="60" r="8" fill="#ffe600" />
+            </svg>
+            <h2>ADMIN PORTAL</h2>
+            <p class="slogan-badge mt-2">PANCASILA ABADI!</p>
+        </div>
+
+        <form id="loginForm" class="login-form">
+            <!-- Alert Error -->
+            <div id="loginErrorAlert" class="login-error-alert" style="display: none;">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span id="errorMessage">Username atau password salah!</span>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="username" name="username" placeholder="Masukkan username" required autocomplete="off">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Masukkan password" required autocomplete="off">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-glow mt-2">
+                <i class="fa-solid fa-right-to-bracket"></i> Masuk Ke Dashboard
+            </button>
+        </form>
+
+        <div class="login-footer text-center mt-4">
+            <p class="text-muted">Kredensial bawaan: <code class="text-orange">admin</code> / <code class="text-orange">pancasilaabadi</code></p>
+        </div>
+    </div>
+
+    <!-- Login JS Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if already logged in
+            if (sessionStorage.getItem('admin_logged_in') === 'true') {
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            // Theme Toggle Logic
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeIcon.className = 'fa-solid fa-moon';
+            } else {
+                themeIcon.className = 'fa-solid fa-sun';
+            }
+
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                if (document.body.classList.contains('light-theme')) {
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.className = 'fa-solid fa-moon';
+                } else {
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.className = 'fa-solid fa-sun';
+                }
+            });
+
+            // Login Logic
+            const loginForm = document.getElementById('loginForm');
+            const errorAlert = document.getElementById('loginErrorAlert');
+            const errorMessage = document.getElementById('errorMessage');
+
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                errorAlert.style.display = 'none';
+
+                const userVal = document.getElementById('username').value.trim();
+                const passVal = document.getElementById('password').value.trim();
+
+                const submitBtn = loginForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memvalidasi...';
+
+                setTimeout(() => {
+                    if (userVal === 'admin' && passVal === 'pancasilaabadi') {
+                        sessionStorage.setItem('admin_logged_in', 'true');
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                        errorMessage.textContent = 'Username atau password Anda salah!';
+                        errorAlert.style.display = 'flex';
+                    }
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>

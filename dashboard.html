@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Pemuda Pancasila</title>
+    
+    <!-- Redirection Guard (Prior to DOM Render) -->
+    <script>
+        if (sessionStorage.getItem('admin_logged_in') !== 'true') {
+            window.location.replace('login.html');
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-brand">
+                <svg class="logo-svg" viewBox="0 0 100 100" width="45" height="45">
+                    <defs>
+                        <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffe600" />
+                            <stop offset="100%" stop-color="#ff6200" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M10,40 Q30,20 50,45 Q70,20 90,40 Q95,70 50,90 Q5,70 10,40 Z" fill="none" stroke="url(#gold-grad)" stroke-width="2" />
+                    <path d="M30,48 Q50,40 70,48 Q70,70 50,82 Q30,70 30,48 Z" fill="#ff6200" opacity="0.85" />
+                    <circle cx="50" cy="60" r="7" fill="#ffe600" />
+                </svg>
+                <div class="brand-text">
+                    <span class="brand-title">PP ADMIN</span>
+                    <span class="brand-subtitle text-orange">Pancasila Abadi!</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <ul>
+                    <li class="menu-item active" data-tab="overview">
+                        <a href="#"><i class="fa-solid fa-chart-pie"></i> Overview</a>
+                    </li>
+                    <li class="menu-item" data-tab="members">
+                        <a href="#"><i class="fa-solid fa-users-gear"></i> Pendaftar Anggota</a>
+                    </li>
+                    <li class="menu-item" data-tab="settings">
+                        <a href="#"><i class="fa-solid fa-sliders"></i> Pengaturan</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-secondary btn-block logout-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i> Keluar (Logout)
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-content">
+            <!-- Header bar -->
+            <header class="dashboard-header">
+                <div class="header-welcome">
+                    <h2>Selamat Datang, <span class="highlight-text">Administrator</span></h2>
+                    <p class="text-muted">Kelola pendaftaran anggota dan statistik LSM Pemuda Pancasila</p>
+                </div>
+                
+                <div class="header-actions">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Ubah Tema">
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+                    <div class="admin-profile">
+                        <div class="profile-avatar"><i class="fa-solid fa-user-gear"></i></div>
+                        <span class="profile-name">Super Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Inner Content -->
+            <div class="dashboard-view active-view" id="view-overview">
+                <!-- Grid Metrik Statistik -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon bg-orange-glow"><i class="fa-solid fa-users"></i></div>
+                        <div class="metric-info">
+                            <h3 id="statTotal">0</h3>
+                            <p>Total Pendaftar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon bg-green-glow"><i class="fa-solid fa-circle-check"></i></div>
+                        <div class="metric-info">
+                            <h3 id="statApproved">0</h3>
+                            <p>Disetujui</p>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon bg-yellow-glow"><i class="fa-solid fa-spinner fa-pulse"></i></div>
+                        <div class="metric-info">
+                            <h3 id="statPending">0</h3>
+                            <p>Menunggu (Pending)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon bg-red-glow"><i class="fa-solid fa-circle-xmark"></i></div>
+                        <div class="metric-info">
+                            <h3 id="statRejected">0</h3>
+                            <p>Ditolak</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Tabel Data -->
+                <div class="dashboard-table-card">
+                    <div class="table-card-header">
+                        <h3>Daftar Pendaftar Anggota Baru</h3>
+                        <div class="table-filters">
+                            <div class="search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="searchMember" placeholder="Cari nama anggota...">
+                            </div>
+                            <select id="filterProvinsi">
+                                <option value="">Semua Provinsi</option>
+                                <option value="DKI Jakarta">DKI Jakarta</option>
+                                <option value="Jawa Barat">Jawa Barat</option>
+                                <option value="Jawa Tengah">Jawa Tengah</option>
+                                <option value="Jawa Timur">Jawa Timur</option>
+                                <option value="Banten">Banten</option>
+                                <option value="Sumatera Utara">Sumatera Utara</option>
+                                <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                                <option value="Kalimantan Timur">Kalimantan Timur</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="member-table">
+                            <thead>
+                                <tr>
+                                    <th>ID Anggota</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Email</th>
+                                    <th>No. WA</th>
+                                    <th>Provinsi</th>
+                                    <th>Tanggal Daftar</th>
+                                    <th>Alasan Bergabung</th>
+                                    <th>Status</th>
+                                    <th>Aksi Keputusan</th>
+                                </tr>
+                            </thead>
+                            <tbody id="memberTableBody">
+                                <!-- Data rendered dynamically by dashboard.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard View: Members (Same table view but dedicated) -->
+            <div class="dashboard-view" id="view-members">
+                <div class="dashboard-table-card">
+                    <div class="table-card-header">
+                        <h3>Manajemen Data Anggota</h3>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray mb-3">Untuk menyaring data secara detail, gunakan fitur pencarian dan penyaringan di halaman **Overview** utama.</p>
+                        <button class="btn btn-primary btn-goto-overview">Kembali ke Overview Utama</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard View: Settings -->
+            <div class="dashboard-view" id="view-settings">
+                <div class="dashboard-table-card p-5">
+                    <h3>Pengaturan Portal Admin</h3>
+                    <p class="text-gray mt-2 mb-4">Pengaturan konfigurasi website LSM Pemuda Pancasila.</p>
+                    
+                    <div class="settings-form-wrapper" style="max-width: 500px;">
+                        <div class="form-group mb-3">
+                            <label>Nama LSM Portal</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-globe"></i>
+                                <input type="text" value="LSM Pemuda Pancasila" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Versi Dashboard</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-code-branch"></i>
+                                <input type="text" value="v1.2.0 (Stable)" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label>Sistem Database</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-database"></i>
+                                <input type="text" value="Browser LocalStorage (Statis terintegrasi)" disabled>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="alert('Pengaturan berhasil disimpan secara lokal!')">Simpan Pengaturan</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Dashboard Core JS -->
+    <script src="dashboard.js"></script>
+</body>
+</html>

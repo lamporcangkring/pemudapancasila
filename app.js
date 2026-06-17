@@ -157,6 +157,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(sec => scrollObserver.observe(sec));
 
+    // Seed default members if empty
+    if (!localStorage.getItem('pp_members')) {
+        const seedMembers = [
+            {
+                id: 'PP-1718501001',
+                fullName: 'Budi Santoso',
+                email: 'budi.santoso@gmail.com',
+                phone: '081234567890',
+                provinsi: 'Jawa Tengah',
+                reason: 'Ingin berpartisipasi aktif dalam bela negara dan kegiatan sosial kemanusiaan di daerah saya.',
+                date: '15 Juni 2026',
+                status: 'Disetujui'
+            },
+            {
+                id: 'PP-1718501002',
+                fullName: 'Rian Hidayat',
+                email: 'rian.hidayat@yahoo.com',
+                phone: '085789012345',
+                provinsi: 'Jawa Barat',
+                reason: 'Ingin memperluas jaringan kepemudaan dan berkontribusi menjaga persatuan NKRI.',
+                date: '16 Juni 2026',
+                status: 'Pending'
+            },
+            {
+                id: 'PP-1718501003',
+                fullName: 'Siti Aminah',
+                email: 'siti.aminah@outlook.com',
+                phone: '089901234567',
+                provinsi: 'DKI Jakarta',
+                reason: 'Tertarik dengan program pemberdayaan UMKM Pemuda Pancasila dan ingin ikut mengembangkannya.',
+                date: '17 Juni 2026',
+                status: 'Pending'
+            }
+        ];
+        localStorage.setItem('pp_members', JSON.stringify(seedMembers));
+    }
+
     // 7. Membership Form Handler
     const form = document.getElementById('membershipForm');
     const successCard = document.getElementById('formSuccessMessage');
@@ -172,8 +209,31 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memproses Pendaftaran...';
 
+            // Extract form values
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const provinsi = document.getElementById('provinsi').value;
+            const reason = document.getElementById('reason').value;
+
             // Mock network call
             setTimeout(() => {
+                // Save to localStorage
+                const newMember = {
+                    id: 'PP-' + Math.floor(1000000000 + Math.random() * 9000000000),
+                    fullName,
+                    email,
+                    phone,
+                    provinsi,
+                    reason,
+                    date: new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }),
+                    status: 'Pending'
+                };
+
+                const existingMembers = JSON.parse(localStorage.getItem('pp_members')) || [];
+                existingMembers.push(newMember);
+                localStorage.setItem('pp_members', JSON.stringify(existingMembers));
+
                 // Hide button loading
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
